@@ -1,5 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
+import {
+  FaUserCircle,
+  FaHome,
+  FaChalkboardTeacher,
+  FaComments,
+  FaBrain,
+  FaChartLine,
+  FaEdit,
+  FaBell,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,16 +22,12 @@ const Navbar = () => {
   const user = true; // Change to true to simulate logged-in state
 
   const navItems = [
-    { name: "Item 1", link: "#" },
-    {
-      name: "Parent",
-      link: "#",
-      submenu: [
-        { name: "Submenu 1", link: "#" },
-        { name: "Submenu 2", link: "#" },
-      ],
-    },
-    { name: "Item 3", link: "#" },
+    { name: "Dashboard", link: "#", icon: <FaHome /> },
+    { name: "FirstGuru", link: "#", icon: <FaChalkboardTeacher /> },
+    { name: "TownHall", link: "#", icon: <FaComments /> },
+    { name: "AI Evaluation", link: "#", icon: <FaBrain /> },
+    { name: "Performance", link: "#", icon: <FaChartLine /> },
+    { name: "Mock Test", link: "#", icon: <FaEdit /> },
   ];
 
   const toggleDropdown = () => {
@@ -57,7 +62,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-white shadow-md">
+    <div className="bg-gray-600 shadow-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Navbar Start */}
         <div className="flex items-center">
@@ -83,14 +88,15 @@ const Navbar = () => {
               </svg>
             </button>
             {isDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-48 rounded-lg bg-white shadow-md">
+              <div className="absolute left-0 mt-2 w-48 rounded-lg bg-gray-500 shadow-md">
                 <ul className="py-2">
                   {navItems.map((item, index) => (
                     <li key={index}>
                       <a
                         href={item.link}
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        className=" flex items-center  px-4 py-2 text-white hover:bg-cyan-600"
                       >
+                        <span className="mr-2 text-lg">{item.icon}</span>{" "}
                         {item.name}
                       </a>
                       {item.submenu && (
@@ -99,7 +105,7 @@ const Navbar = () => {
                             <li key={subIndex}>
                               <a
                                 href={subitem.link}
-                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                className="block px-4 py-2 text-white hover:bg-cyan-600"
                               >
                                 {subitem.name}
                               </a>
@@ -114,8 +120,11 @@ const Navbar = () => {
             )}
           </div>
           {/* Logo */}
-          <a href="#" className="text-xl font-bold text-gray-800">
-            MyApp
+          <a
+            href="#"
+            className="text-xl font-bold text-white hover:text-cyan-200"
+          >
+            Firstbench
           </a>
         </div>
 
@@ -126,8 +135,9 @@ const Navbar = () => {
               <li key={index} className={item.submenu ? "relative group" : ""}>
                 <a
                   href={item.link}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="flex items-center text-white hover:text-cyan-200"
                 >
+                  <span className="mr-2 text-lg">{item.icon}</span>
                   {item.name}
                 </a>
                 {item.submenu && (
@@ -150,7 +160,13 @@ const Navbar = () => {
         </div>
 
         {/* Navbar End */}
-        <div className="relative" ref={profileDropdownRef}>
+        <div className="relative flex" ref={profileDropdownRef}>
+          {/* Notification Icon */}
+          <button className="  p-2  rounded-full hover:bg-gray-200">
+            <FaBell className="text-xl text-white " />
+            {/* Notification Badge */}
+          </button>
+
           <button
             onClick={toggleProfileDropdown}
             className="flex items-center space-x-2 bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200"
