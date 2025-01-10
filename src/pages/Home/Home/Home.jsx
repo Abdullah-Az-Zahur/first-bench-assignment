@@ -45,7 +45,7 @@ const Home = () => {
 
             {/* second div */}
 
-            <div className="bg-indigo-50 rounded-lg py-2">
+            <div className="bg-indigo-50 rounded-lg py-2 ">
               <div className="flex">
                 <div className="p-2">
                   <img src={user} alt="" className="w-9 h-9" />
@@ -68,6 +68,16 @@ const Home = () => {
                 <p className="text-white bg-green-600 px-1 w-fit text-xs rounded-lg mx-auto ">{`92% ACCURACY`}</p>
               </div>
             </div>
+
+            {/* third div */}
+
+              <div className="py-2">
+                <h2 className="font-bold">Improve your Marks</h2>
+                <p className="text-xs text-gray-400 font-bold">Improve Your Score By practice more.</p>
+              
+              <button type="button " className="bg-indigo-500 text-white w-full rounded mt-8 p-1">Practice more</button>
+              </div>
+
           </div>
         </div>
       </section>
